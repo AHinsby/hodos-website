@@ -18,8 +18,8 @@ IMAGE_DIMENSIONS = {
 NAV = [
     ("For familier", "/familier/"),
     ("For voksne", "/voksne/"),
-    ("Kurser", "/kurser/"),
-    ("Sådan fungerer det", "/saadan-fungerer-det/"),
+    ("Læringsvejen", "/saadan-fungerer-det/"),
+    ("Kursusidéer", "/kurser/"),
     ("Om HODOS", "/om-hodos/"),
 ]
 
@@ -81,7 +81,7 @@ def header(slug: str) -> str:
   <div class="shell header-inner">
     <a class="wordmark" href="{prefix}" aria-label="{SITE_NAME} forside">{SITE_NAME}</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Menu<span class="menu-icon" aria-hidden="true"></span></button>
-    <nav id="site-navigation" class="site-nav" aria-label="Hovednavigation">{links}<a class="button button-small" href="{prefix}kurser/">Se kurser</a></nav>
+    <nav id="site-navigation" class="site-nav" aria-label="Hovednavigation">{links}<a class="button button-small" href="{prefix}kurser/">Kursusidéer</a></nav>
   </div>
 </header>'''
 
@@ -91,8 +91,8 @@ def footer(slug: str) -> str:
     return f'''<footer class="site-footer">
   <div class="shell footer-grid">
     <div><a class="wordmark" href="{prefix}">{SITE_NAME}</a><p>Praktiske færdigheder. Sikkerhed. Eventyr.</p></div>
-    <div><h2>Find vej</h2><a href="{prefix}familier/">For familier</a><a href="{prefix}voksne/">For voksne</a><a href="{prefix}kurser/">Kurser</a></div>
-    <div><h2>Praktisk</h2><a href="{prefix}saadan-fungerer-det/">Sådan fungerer det</a><a href="{prefix}praktisk/">Praktisk</a><a href="{prefix}kontakt/">Kontakt</a></div>
+    <div><h2>Find vej</h2><a href="{prefix}familier/">For familier</a><a href="{prefix}voksne/">For voksne</a><a href="{prefix}kurser/">Kursusidéer</a></div>
+    <div><h2>Praktisk</h2><a href="{prefix}saadan-fungerer-det/">Læringsvejen</a><a href="{prefix}praktisk/">Praktisk</a><a href="{prefix}kontakt/">Kontakt</a></div>
   </div>
   <div class="shell footer-note">HODOS er et arbejdsnavn. Kurser offentliggøres først med bekræftede praktiske rammer.</div>
 </footer>'''
@@ -122,12 +122,13 @@ def layout(slug: str, title: str, description: str, body: str) -> str:
 
 
 def hero(slug: str, eyebrow: str, title: str, intro: str, primary: tuple[str, str], image: str, image_alt: str, secondary: tuple[str, str] | None = None) -> str:
-    secondary_html = "" if not secondary else f'<a class="text-link" href="{secondary[1]}">{secondary[0]} <span aria-hidden="true">→</span></a>'
+    secondary_html = "" if not secondary else f'<a class="text-link hero-secondary" href="{secondary[1]}">{secondary[0]} <span aria-hidden="true">→</span></a>'
     prefix = asset_prefix(slug)
-    return f'''<section class="hero">
+    width, height = IMAGE_DIMENSIONS[image]
+    return f'''<section class="hero hero-home">
   <div class="shell hero-grid">
-    <div class="hero-copy"><p class="eyebrow">{eyebrow}</p><h1>{title}</h1><p class="hero-lead">{intro}</p><div class="hero-actions"><a class="button" href="{primary[1]}">{primary[0]} <span aria-hidden="true">→</span></a>{secondary_html}</div></div>
-    <figure class="hero-media"><img src="{prefix}assets/images/{image}" alt="{image_alt}" width="1536" height="1024" fetchpriority="high"></figure>
+    <div class="hero-copy"><p class="eyebrow">{eyebrow}</p><h1>{title}</h1><p class="hero-lead">{intro}</p><div class="hero-actions"><a class="button" href="{primary[1]}">{primary[0]} <span aria-hidden="true">→</span></a>{secondary_html}</div><p class="hero-note">Start med et forløb, der passer til jer. Kursusidéer er under afprøvning og åbnes først, når rammerne er klar.</p></div>
+    <figure class="hero-media hero-media--portrait"><img src="{prefix}assets/images/{image}" alt="{image_alt}" width="{width}" height="{height}" fetchpriority="high"></figure>
   </div>
 </section>'''
 
@@ -148,15 +149,12 @@ def page_intro(eyebrow: str, title: str, intro: str) -> str:
 
 
 def home() -> str:
-    body = hero("home", "Friluftsliv · Sikkerhed · Eventyr", "Fra første skridt til egne eventyr.", "HODOS er en færdigheds- og eventyrskole for familier og voksne. Vi lærer praktiske færdigheder, så du kan færdes tryggere, træffe bedre beslutninger og gennemføre dine egne eventyr.", ("Se kurser", "kurser/"), "home-family-trail.webp", "Familie går sammen på en rolig skovsti ved åbent landskab", ("Sådan fungerer det", "saadan-fungerer-det/"))
-    body += '''<section class="section"><div class="shell"><div class="section-heading"><p class="eyebrow">To veje ind</p><h2>Én fælles idé: at kunne mere selv.</h2><p>Du behøver ikke erfaring for at begynde. Du behøver lysten til at lære, øve dig og tage gode valg sammen med andre.</p></div><div class="card-grid two">'''
-    body += card("For familier", "Lær at finde vej, pakke til tur og løse små opgaver sammen. Børn og voksne deltager i fælles læring – med ansvar, der passer til situationen.", "familier/", "Se forløb for familier")
-    body += card("For voksne", "Kom godt i gang med navigation og turplanlægning, eller byg et praktisk fundament for en større personlig udfordring.", "voksne/", "Se forløb for voksne")
-    body += '''</div></div></section>
-<section class="section section-tint"><div class="shell"><div class="section-heading"><p class="eyebrow">Vores læringsvej</p><h2>Ét fundament. Flere veje. Egne eventyr.</h2><p>Progression er en mulighed, ikke et krav. Du kan tage ét kursus eller bygge videre, når det giver mening.</p></div><ol class="progression"><li><span>01</span><div><p class="step-label">Explorer</p><h3>Find dit fundament</h3><p>Kom godt i gang med sikkerhed, udstyr, navigation og praktiske valg på tur.</p></div></li><li><span>02</span><div><p class="step-label">Færdigheder</p><h3>Øv det, du vil blive bedre til</h3><p>Fokuser på eksempelvis navigation, turplanlægning eller andre relevante moduler.</p></div></li><li><span>03</span><div><p class="step-label">Ekspedition</p><h3>Brug færdighederne selv</h3><p>Større ture bliver først relevante, når forberedelse og rammer passer til opgaven.</p></div></li></ol><a class="text-link" href="saadan-fungerer-det/">Læs om metoden <span aria-hidden="true">→</span></a></div></section>
-<section class="section"><div class="shell split"><div><p class="eyebrow">Faglighed i praksis</p><h2>Vi øver det, der betyder noget, når planen ændrer sig.</h2></div><div><p>At færdes godt handler ikke om at tage størst mulig risiko. Det handler om at være forberedt, læse situationen og kunne vælge en ny vej, når det er det rigtige.</p><p>HODOS bruger praktiske opgaver, refleksion og overskuelige scenarier, så læringen kan bruges efter kurset.</p><a class="text-link" href="om-hodos/">Om HODOS <span aria-hidden="true">→</span></a></div></div></section>
-<section class="section section-dark"><div class="shell cta-block"><p class="eyebrow">Næste skridt</p><h2>Find det næste, du gerne vil kunne.</h2><p>Se de kursusidéer, der er under afprøvning. Der vises ikke datoer, priser eller tilmelding, før rammerne er på plads.</p><a class="button button-light" href="kurser/">Se kurser <span aria-hidden="true">→</span></a></div></section>'''
-    return layout("home", "Fra første skridt til egne eventyr", "Praktiske kurser i friluftsliv, sikkerhed og navigation for familier og voksne.", body)
+    body = hero("home", "Friluftsliv · Sikkerhed · Eventyr", "Fra første skridt til egne eventyr.", "HODOS er for familier og voksne, der vil lære praktiske færdigheder til ture i naturen — roligt, konkret og med plads til egne valg.", ("Udforsk læringsvejen", "saadan-fungerer-det/"), "family-explorer-path.webp", "Kort og kompas i forgrunden, mens en familie bevæger sig gennem et nordisk skovlandskab", ("Vælg familie eller voksen", "#veje-ind"))
+    body += '''<section id="veje-ind" class="section home-section audience-section"><div class="shell"><div class="section-heading section-heading--split"><div><p class="eyebrow">Vælg dit udgangspunkt</p><h2>Samme metode. To forskellige veje ind.</h2></div><p>HODOS starter der, hvor I er. Vælg den vej, der passer til jeres hverdag, erfaring og mål.</p></div><div class="audience-grid"><article class="audience-card audience-card--family"><p class="card-kicker">For familier</p><h3>Lær sammen — og brug det sammen.</h3><p>Et foreslået Explorer-forløb under afprøvning, hvor børn og voksne finder vej, planlægger og løser opgaver i fællesskab.</p><ul><li>Explorer 1–3 · under afprøvning</li><li>Fælles opgaver i naturen</li><li>Færdigheder, der kan bruges på egne ture</li></ul><a class="text-link" href="familier/">Se familieforløbet <span aria-hidden="true">→</span></a></article><article class="audience-card audience-card--adult"><p class="card-kicker">For voksne</p><h3>Bliv mere selvstændig på tur.</h3><p>Et praktisk fundament i navigation, turplanlægning og gode beslutninger, når forholdene ændrer sig.</p><ul><li>Begyndervenligt tempo</li><li>Navigation og plan B</li><li>Fokus på egne ture og mål</li></ul><a class="text-link" href="voksne/">Se forløb for voksne <span aria-hidden="true">→</span></a></article></div></div></section>
+<section class="section section-tint home-section journey-section"><div class="shell"><div class="section-heading"><p class="eyebrow">HODOS’ læringsvej</p><h2>Et fundament, du kan bygge videre på.</h2><p>Progression er en mulighed — ikke et krav. Du kan tage ét kursus, fordybe dig i en færdighed eller bygge videre, når det giver mening.</p></div><ol class="signature-journey"><li><span class="journey-number">01</span><p class="step-label">Explorer</p><h3>Start med det, der gør en forskel.</h3><p>Forberedelse, udstyr, navigation og konkrete valg i overskuelige rammer.</p></li><li><span class="journey-number">02</span><p class="step-label">Færdigheder</p><h3>Øv det, du vil kunne mere af.</h3><p>Fordyb dig i navigation, turplanlægning eller andre praktiske moduler, når de er klar.</p></li><li><span class="journey-number">03</span><p class="step-label">Egne eventyr</p><h3>Brug det, når det tæller.</h3><p>Planlæg og gennemfør ture, der passer til din erfaring, dine rammer og situationen.</p></li></ol><a class="text-link section-link" href="saadan-fungerer-det/">Se hele læringsvejen <span aria-hidden="true">→</span></a></div></section>
+<section class="section home-section method-section"><div class="shell method-grid"><div class="method-intro"><p class="eyebrow">HODOS-metoden</p><h2>Planlæg. Vurder. Tilpas.</h2><p>Godt friluftsliv handler ikke om at presse planen igennem. Det handler om at kunne læse situationen og vælge klogt undervejs.</p><a class="text-link" href="om-hodos/">Læs om HODOS <span aria-hidden="true">→</span></a></div><ol class="principle-list"><li><span>01</span><div><h3>Planlæg</h3><p>Gør turen overskuelig med en enkel rute, det rigtige udstyr og en plan B.</p></div></li><li><span>02</span><div><h3>Vurder</h3><p>Se på vejr, terræn, energi og den gruppe, du er en del af.</p></div></li><li><span>03</span><div><h3>Tilpas</h3><p>Vælg en ny vej, kortere rute eller pause, når det er den gode beslutning.</p></div></li></ol></div></section>
+<section class="section home-cta"><div class="shell home-cta-grid"><div><p class="eyebrow">Næste skridt</p><h2>Find den vej, der passer til dig.</h2><p>Se HODOS’ kursusidéer og læringsvejen. Praktiske rammer offentliggøres først, når de er bekræftet.</p></div><div class="home-cta-actions"><a class="button button-light" href="kurser/">Se kursusidéer <span aria-hidden="true">→</span></a><a class="text-link text-link--light" href="saadan-fungerer-det/">Sådan fungerer HODOS <span aria-hidden="true">→</span></a></div></div></section>'''
+    return layout("home", "Fra første skridt til egne eventyr", "Praktiske forløb i friluftsliv, sikkerhed og navigation for familier og voksne.", body)
 
 
 def families() -> str:
