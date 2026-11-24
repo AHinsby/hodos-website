@@ -50,16 +50,18 @@ p { color: var(--muted); }
 .button-light:hover { background: white; color: var(--pine); }
 .text-link { color: var(--ink); font-weight: 800; }
 .hero-media { min-height: 0; margin: 0; overflow: hidden; border-radius: 11rem 11rem .45rem .45rem; background: var(--sage); }
-.hero-media img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+/* HTML width/height attributes reserve space before load; reset rendered height so each editorial ratio controls the final crop. */
+.hero-media img, .family-feature-image img, .card-image img, .wide-image img { display: block; width: 100%; height: auto; object-fit: cover; }
+.hero-media img { aspect-ratio: 3 / 2; }
 .family-feature-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(19rem, .85fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
 .family-feature-image, .wide-image, .card-image { margin: 0; overflow: hidden; background: var(--sage); }
 .family-feature-image { border-radius: .5rem; }
-.family-feature-image img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.family-feature-image img { aspect-ratio: 4 / 5; }
 .card-image { margin: -1.4rem -1.4rem 1.35rem; border-radius: .45rem .45rem 0 0; }
-.card-image img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: center; }
+.card-image img { aspect-ratio: 3 / 2; object-position: center; }
 .image-break { padding: 0 0 clamp(2.5rem, 6vw, 5.5rem); }
 .wide-image { border-radius: .5rem; }
-.wide-image img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: center; }
+.wide-image img { aspect-ratio: 3 / 2; object-position: center; }
 .section, .page-intro { padding: clamp(4rem, 8vw, 7.5rem) 0; }
 .page-intro { padding-bottom: clamp(2.5rem, 5vw, 4rem); border-bottom: 1px solid var(--line); }
 .section-tint { background: var(--sage); }
