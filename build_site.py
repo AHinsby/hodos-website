@@ -60,6 +60,15 @@ COURSES = {
         "outcomes": ["etablere en enkel lejrbase", "lave enkel mad over bål", "bruge kort og kompas til rutevalg", "lave en realistisk plan B for en tur"],
         "for_whom": "Voksne, der vil opbygge konkrete outdoor-færdigheder i et begyndervenligt tempo.",
     },
+    "outdoor-survival-2": {
+        "title": "Voksne Outdoor 2 — Mørke, kulde og fokus",
+        "audience": "For voksne · Niveau 2",
+        "summary": "Et outdoor-forløb for voksne, der vil bevare overblik og træffe gode valg, når kulden bider, lyset falder, og planen skal tilpasses.",
+        "experience": "For voksne, der vil bygge videre på grundfærdighederne",
+        "intro": "I arbejder med varme, læ, lys, tempo og opmærksomhed i mere krævende forhold. Fokus er ikke på at presse grænser, men på at bruge udstyr, energi og beslutninger klogt, når naturen stiller større krav.",
+        "outcomes": ["vurdere kulde, vind og mørke i forhold til turens plan", "etablere varme, læ og lys med enkle midler", "prioritere energi, pauser og udstyr", "tilpasse rute og beslutninger, når forholdene ændrer sig"],
+        "for_whom": "Voksne, der vil have mere ro og handlekraft på ture i køligere, mørkere eller mere skiftende forhold.",
+    },
 }
 
 
@@ -174,7 +183,7 @@ def adults() -> str:
     body = page_intro("For voksne", "Gør dig klar til dit næste eventyr.", "Du behøver ikke være erfaren friluftsentusiast for at begynde. Lær navigation, turplanlægning og sikkerhed – eller brug færdighederne som fundament for et konkret mål.")
     body += '''<section class="section"><div class="shell card-grid two"><article class="content-card"><p class="card-kicker">Jeg er ny</p><h2>Kom godt i gang</h2><p>Start med kort, kompas, rutevalg og en enkel turplan. Byg grundfærdighederne, før du gør planen større.</p><a class="text-link" href="../kurser/outdoor-survival-1/">Se navigation og turplanlægning <span aria-hidden="true">→</span></a></article><article class="content-card"><p class="card-kicker">Jeg har et mål</p><h2>Forbered dig bedre</h2><p>Et større mål kan begynde med samme grundlag: dømmekraft, realistisk planlægning og praktiske færdigheder, der passer til turen.</p><a class="text-link" href="../saadan-fungerer-det/">Læs om læringsvejen <span aria-hidden="true">→</span></a></article></div></section>
 <section class="section section-tint"><div class="shell split"><div><p class="eyebrow">Når planen ændrer sig</p><h2>En god beslutning er ikke altid at fortsætte.</h2></div><div><p>HODOS fokuserer på at kunne læse terræn og forhold, planlægge en alternativ rute og ændre beslutning i tide. Det er forberedelse – ikke en garanti for en bestemt præstation eller gennemførelse.</p><a class="text-link" href="../om-hodos/">Læs om vores tilgang <span aria-hidden="true">→</span></a></div></div></section>
-<section class="section"><div class="shell"><div class="section-heading"><p class="eyebrow">Familie Survival</p><h2>Outdoor Survival 1 — Bål, lejr og navigation.</h2><p>Et praktisk outdoor-forløb om bål, lejr, mad, navigation og plan B.</p></div><div class="card-grid one">''' + card("Navigation og turplanlægning", COURSES["outdoor-survival-1"]["summary"], "../kurser/outdoor-survival-1/", "Se forløbet") + '''</div></div></section>'''
+<section class="section"><div class="shell"><div class="section-heading"><p class="eyebrow">Outdoor Survival</p><h2>Byg videre, når forholdene kræver mere.</h2><p>Vælg et niveau, der passer til din erfaring og den type ture, du vil kunne gennemføre.</p></div><div class="card-grid two">''' + card("Outdoor Survival 1 — Bål, lejr og navigation", COURSES["outdoor-survival-1"]["summary"], "../kurser/outdoor-survival-1/", "Se forløbet") + card("Voksne Outdoor 2 — Mørke, kulde og fokus", COURSES["outdoor-survival-2"]["summary"], "../kurser/outdoor-survival-2/", "Se forløbet") + '''</div></div></section>'''
     return layout("voksne", "For voksne", "Praktiske færdigheder i navigation og turplanlægning for voksne begyndere og eventyrere.", body)
 
 
