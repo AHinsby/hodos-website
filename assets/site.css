@@ -56,10 +56,10 @@ p { color: var(--muted); }
 .family-feature-image { border-radius: .5rem; }
 .family-feature-image img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 .card-image { margin: -1.4rem -1.4rem 1.35rem; border-radius: .45rem .45rem 0 0; }
-.card-image img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 68%; }
+.card-image img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: center; }
 .image-break { padding: 0 0 clamp(2.5rem, 6vw, 5.5rem); }
 .wide-image { border-radius: .5rem; }
-.wide-image img { display: block; width: 100%; aspect-ratio: 16 / 7; object-fit: cover; object-position: center; }
+.wide-image img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: center; }
 .section, .page-intro { padding: clamp(4rem, 8vw, 7.5rem) 0; }
 .page-intro { padding-bottom: clamp(2.5rem, 5vw, 4rem); border-bottom: 1px solid var(--line); }
 .section-tint { background: var(--sage); }
