@@ -1,6 +1,6 @@
-# HODOS – billedretning og promptpakke
+# UdeKlar – billedretning og promptpakke
 
-Disse prompts er til midlertidige HODOS-visuals. De skal bruges som redaktionelle stemningsbilleder, ikke som dokumentation for rigtige HODOS-hold, konkrete lokationer eller allerede afholdte kurser.
+Disse prompts er til midlertidige UdeKlar-visuals. De skal bruges som redaktionelle stemningsbilleder, ikke som dokumentation for rigtige UdeKlar-hold, konkrete lokationer eller allerede afholdte kurser.
 
 ## Fælles stilregel
 
@@ -9,7 +9,7 @@ Disse prompts er til midlertidige HODOS-visuals. De skal bruges som redaktionell
 - Dæmpet skovgrøn, mosgrøn, sten, varm offwhite og naturligt morgen- eller eftermiddagslys
 - Ingen logoer, tekst, vandmærker, badges eller militær æstetik
 - Ingen ekstreme bjergtoppe, overlevelsesdrama eller farlige situationer
-- Ingen genkendelige ansigter eller personer, der kan ligne virkelige HODOS-deltagere
+- Ingen genkendelige ansigter eller personer, der kan ligne virkelige UdeKlar-deltagere
 - Landskab, hænder, rygfigurer eller små grupper set på afstand er bedst
 
 ## 1. Forside – læring i naturen
@@ -36,7 +36,7 @@ Disse prompts er til midlertidige HODOS-visuals. De skal bruges som redaktionell
 
 > Nordic editorial outdoor scene suggesting thoughtful preparation for a longer trip: a lone unidentifiable back-facing adult with a modest backpack pauses at a coastal trail viewpoint and studies a map, calm weather, safe visible path, Danish or Swedish landscape, understated confidence, muted forest green and natural stone palette, no dramatic cliff, no extreme sports, no logo, no text, no close-up face.
 
-## 5. Om HODOS – metode og dømmekraft
+## 5. Om UdeKlar – metode og dømmekraft
 
 **Format:** 4:3
 

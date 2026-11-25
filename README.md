@@ -1,6 +1,6 @@
-# HODOS website
+# UdeKlar website
 
-The static Danish MVP website for HODOS — a skills and adventure school for families and adults.
+The static Danish MVP website for UdeKlar — a skills and adventure school for families and adults.
 
 ## Current state
 
@@ -26,4 +26,4 @@ Then open `http://127.0.0.1:4173/`.
 
 ## Project direction
 
-HODOS helps families and adults build practical outdoor skills, sound judgement and confidence for independent adventures. The public site must remain Danish, factual and clear about what is not yet available.
+UdeKlar helps families and adults build practical outdoor skills, sound judgement and confidence for independent adventures. The public site must remain Danish, factual and clear about what is not yet available.
